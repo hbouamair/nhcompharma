@@ -1,0 +1,6 @@
+[1103/203010.947:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1103/221635.786:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\user\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\581c3527-6552-4b0d-849c-42d42114c3e9: Le chemin d’accès spécifié est introuvable. (0x3)
+[1104/105532.238:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1104/115659.398:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1104/134801.747:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1106/171217.203:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
