@@ -30,7 +30,7 @@
     "react-scripts": "3.4.1",
     "react-slick": "^0.27.12",
     "react-stripe-checkout": "^2.6.3",
-    "react-toastify": "^6.0.4",
+    "react-toastify": "^6.1.0",
     "reactstrap": "^8.7.0",
     "save": "^2.4.0",
     "slick-carousel": "^1.8.1",

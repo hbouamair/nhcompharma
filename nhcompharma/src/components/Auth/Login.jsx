@@ -69,7 +69,9 @@ export default function SignIn() {
 
   const [username,setUsername] = useState(""); 
   const [password ,setPassword] = useState(""); 
-  const [isChecked ,setChecked] = useState(false); 
+  const [isChecked ,setChecked] = useState(false);  
+
+  const [isOnline, setNetwork] = useState(window.navigator.onLine); 
 
   const handlechange = (e) => { 
     const { id , value } = e.target ;   
@@ -143,7 +145,8 @@ export default function SignIn() {
 
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs"> 
+      {isOnline+""}
       <CssBaseline /> 
       <Collapse in={open} style={{ width:'100%',}}>  
            <Alert severity="error" onClose ={ () => { setOpen(false)}  }>Utilisateur non trouvé !</Alert>
