@@ -2,15 +2,17 @@
     --primary: #a5d296;
 }
 
-.btn {
+.btno {
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;
     border: none;
     cursor: pointer;
+    background-color: #a5d296;
+    color :#fff;
 }
 
-.btn:hover {
+.btno:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
     background: #467AA0;
@@ -18,11 +20,11 @@
     transition: 250ms;
 }
 
-.btn--primary {
+.btno--primary {
     background-color: var(--primary);
 }
 
-.btn--outline {
+.btno--outline {
     background-color: transparent;
     color: #fff;
     padding: 8px 20px;
@@ -31,14 +33,14 @@
     transition: all 0.3s ease-out;
 }
 
-.btn--medium {
+.btno--medium {
     padding: 8px 20px;
     border-radius: 4px;
     font-size: 18px;
     color: #fff;
 }
 
-.btn-large {
+.btno-large {
     padding: 12px 26px;
     border-radius: 4px;
     font-size: 20px;

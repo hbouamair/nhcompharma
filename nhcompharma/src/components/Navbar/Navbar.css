@@ -18,6 +18,26 @@
     margin-left: 0.5rem;
     font-size: 1.6rem;
 }
+.btn-login{
+    font-size: 1.4rem;
+  padding: 1rem 4rem;
+  border: none;
+  background: #467AA0;
+  color: #fff;
+  border-radius:10px;
+  transition: 0.2s ease-out;
+
+}
+
+.btn-login:hover{
+ 
+    background: #069543;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    color: #000;
+  
+    
+}
 
 .nav-menu {
     display: grid;
@@ -32,6 +52,7 @@
 .logo{
     max-width: 100%;
     width: 90px;
+    margin-top: 13px;
 }
 
 .nav-links {
@@ -140,7 +161,7 @@
         transition: 250ms;
     }
 
-    .btn{
+    .btno{
         display: none;
     }
 }

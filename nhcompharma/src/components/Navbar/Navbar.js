@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {useContext} from "react"
 import { MenuItems } from "./MenuItems"
-import { Button } from "./Button"
+import { but } from "./Button"
 import './Navbar.css'
 import {Link} from "react-router-dom"
 import logo from '../../assets/nh.png'
@@ -20,7 +20,8 @@ class Navbar extends Component {
     render() {
         return(
             <nav className="NavbarItems fixed-top ">
-                <h1 className="navbar-logo"><img className="logo" src={logo} /></h1>
+                <h1 className="navbar-logo"><Link to="/"><img  className="logo" src={logo} />
+                </Link></h1>
                 <div className="menu-icon" onClick={this.handleClick}>
                     <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>
@@ -37,7 +38,7 @@ class Navbar extends Component {
                         )
                     })}
                 </ul>
-              <Link to="/login">   <Button className="btn"> Sign Up</Button></Link>
+              <Link to="/login">   <but className="btno"> Sign Up</but></Link>
                 <Navi/>
             </nav>
         )
