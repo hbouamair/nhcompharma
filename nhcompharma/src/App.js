@@ -7,7 +7,14 @@ import Cart from "./components/Cart"
 import ProductContextProvider from "./Global/productContext"
 import CartContextProvider from "./Global/cartContext"
 import login from "./components/Auth/Login";
-import register from "./components/Auth/register/Register";
+import Form from "./components/Auth/register/Type/Index";
+import Doctor from "./components/Auth/register/DocRegist/Form";
+import Pharmacie from "./components/Auth/register/PharmacieRegist/Form";
+import Particulier from "./components/Auth/register/ParticulRegist/Form";
+import Hospital from "./components/Auth/register/HospitalRegist/Form";
+import Home from "./components/Home/index"
+import Admin from "./components/Dashboard/index.js"
+
 import Home from "./components/Home/index" ; 
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -40,7 +47,13 @@ useEffect(() => {
           <Route path="/" exact component={Home} />
           <Route path="/cart" exact component={Cart} />
           <Route path = "/login" exact component={login}/>
-          <Route path = "/register" exact component={register}/>
+          <Route path = "/register" exact component={Form}/>
+          <Route path = "/Doctor" exact component={Doctor}/>
+          <Route path = "/Pharmacie" exact component={Pharmacie}/>
+          <Route path = "/Clinique" exact component={Hospital}/>
+          <Route path = "/Particulier" exact component={Particulier}/>
+          <Route path = "/Admin" exact component={Admin}/>
+
         </Switch>
       </Router>
       </CartContextProvider>
