@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 import Banner from "../Banner"
 import Footer from "../Footer/index"
 import SideCarousel from "../SideCarousel/SideCarousel"
+import Chat from '../Chat';
 
 
 
@@ -14,17 +15,12 @@ function Home() {
   return (
     
     <Router>
-    
-    
       <GlobalStyle />
       <Hero />
-      <Banner/>
-
       <Products />
       <SideCarousel/>
-
-      <Footer/>
-  
+      <Footer/> 
+      <Chat />
     </Router>
   );
 }
