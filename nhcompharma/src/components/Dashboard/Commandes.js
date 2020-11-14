@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect , useState } from 'react'
 import ChartistGraph from 'react-chartist'
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -22,140 +22,211 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogTitle from '@material-ui/core/DialogTitle'; 
+import 'react-toastify/dist/ReactToastify.css';   
+import ReactTable from 'react-table-6' ; 
+import 'react-table-6/react-table.css' ; 
+import SERVER_URL from '../variables/server_url'; 
+import { ToastContainer, toast } from 'react-toastify'; 
 
 
 
-class Commandes extends Component {
-  constructor(props) {
-    super(props);
-    // Don't call this.setState() here!
-    this.state = {isOpen :  false} ;
-    this.handleOpen = this.handleOpen.bind(this);
+
+
+
+function Commandes() { 
+     
+      const [isOpen , setOpen ] = useState(false);    
+
+      const [ code , setCode ] = useState("");
+      const [ date , setDate ] = useState("");
+      const [ etat , setEtat ] = useState(""); 
+      const [ Orders , setOrders ] = useState([]); 
+      const [loading , setLoading] = useState(false); 
+      const [selectedOrder , setSelectedOrder] = useState("");
+
+
+      const handleClick = () => { 
+          setOpen(!isOpen);  
+          
+      } 
+      
+      const OpenModal = (id) => {  
+         setSelectedOrder(id);
+         handleClick();
+      }
    
-  }
- 
-  handleOpen() {
-    this.setState({
-      isOpen:!this.state.isOpen
-    });
-  }
+      
+      const notify = (message) => toast(message);  
+      
+      
+      const columns = [{
+        Header: 'Code de commande',
+        accessor: 'id' // String-based value accessors!
+      }, {
+        Header: 'Date de commande',
+        accessor: 'date',
+        Cell:  <span className='number'>heeeeey</span> // Custom cell components!
+        } ,  {
+        Header: 'Etat',
+        accessor: 'etat' // String-based value accessors!
+      }  
+      ] 
 
- 
 
-
-
-  render() {
-  
-    
-    return (
-
-      <div className="content">
-      <Dialog open={this.state.isOpen} onClose={this.handleOpen} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Confirmer la commande </DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Vous voulez confirmer cette commande  ? 
-        </DialogContentText>
-        
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={this.handleOpen} color="primary">
-          Confirmer
-        </Button>
-        <Button onClick={this.handleOpen} color="primary">
-          Annuler
-        </Button>
-      </DialogActions>
-    </Dialog>
-    
-    
-        <div className="container-fluid">
-        
-          <div className="row">
-
-            <div className="col-md-4">
-              <div className="card ">
-                <div className="card-header ">
-                  <h4 className="card-title">Listes des Commandes </h4>
-                  <p className="card-category"></p>
-                </div>
-                <div className="card-body ">
-                
-                <Paper>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                    <TableCell>
-                    <strong>ID </strong>
-                  </TableCell>
-                      <TableCell>
-                        <strong>Client </strong>
-                      </TableCell>
-                      <TableCell>
-                        <strong>date de Commande</strong>
-                      </TableCell>
-                      <TableCell>
-                        <strong>ligne de Commandes </strong>
-                      </TableCell>
-                      <TableCell></TableCell>
-                    </TableRow>
-                  </TableHead>
-
-                  <TableBody>
-                    
-                     
-                  
-                     
-                        <TableRow >
-                        <TableCell>1203994772746</TableCell>
-                          <TableCell> clinell product</TableCell>
-                          <TableCell></TableCell>
-                          <TableCell>
-                            
-                          </TableCell>
-                          
-                          
-                          <TableCell>
-                            <ButtonGroup
-                              disableElevation
-                              variant="contained"
-                              color="primary"
-                            >
-                              <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={this.handleOpen}
-                                startIcon={<EditIcon />}
-                              >
-                                Confirmer
-                              </Button>
-
-                              <Button
-                                variant="contained"
-                                color="secondary"
-                               
-                                startIcon={<DeleteIcon />}
-                              >
-                                supprimer
-                              </Button>
-                            </ButtonGroup>
-                          </TableCell>
-                        </TableRow>
-                    
-                  </TableBody>
-                </Table>
-              </Paper>
-                </div>
-              </div>
-            </div>
+      const ConfirmOrder = () => { 
+        const token  = sessionStorage.getItem('jwt'); 
+        handleClick();
+        fetch(SERVER_URL+"admin/commande/"+selectedOrder+"/confirm" , { 
+       
+            headers : { 'Authorization' : token } , 
+            method : 'POST'
+        }) 
+        .then((response) => { 
+          if (response.status >= 200 && response.status <= 299) {  
+              
+            notify("La Commande a bien été confirmée!")   
+            getOrders(); 
+          
             
+          } else {  
+           
+            notify("Erreur : "+ response.status)
+          }
+        })
+         .catch((error) => {  
 
-          </div>
-        </div>
-      </div>
+         }); 
+      } 
+
+      const DeleteOrder = () => {   
+
+
+        const token  = sessionStorage.getItem('jwt'); 
+        handleClick(); 
+        console.log(SERVER_URL+"commandes/"+selectedOrder)
+        fetch(SERVER_URL+"commandes/"+selectedOrder, { 
+       
+            headers : { 'Authorization' : token } , 
+            method : 'DELETE'
+        }) 
+        .then((response) => { 
+          if (response.status >= 200 && response.status <= 299) {  
+              
+            notify("La Commande a été supprimée!")   
+            getOrders(); 
+          
+            
+          } else {  
+           
+            notify("Erreur : "+ response.status)
+          }
+        })
+         .catch((error) => {  
+              
+          
+      
+         }); 
+      
+
+
+
+      } 
+
+      const getOrders = () => {  
+
+        const token  = sessionStorage.getItem('jwt') ; 
+        fetch(SERVER_URL+"admin/commandes", {  
+          headers : { 'Authorization' : token } ,
+          method : 'GET'
+        })
+          .then(res => res.json())
+          .then(
+            (data) => {  
+               setLoading(false);  
+              console.log(data); 
+            data.map((commande) => { 
+              if(commande.etat == "Inprogress"){ 
+                     commande.etat = "En cours"
+                  }else if (commande.etat=="Deleted") { 
+                    commande.etat = "Supprimée"
+                   }else if (commande.etat=="Confirmed") { 
+                    commande.etat = "Confirmée"
+              }
+             }) 
+              
+               setOrders(data);
+            },
+            (error) => {
+                 
+            }
+          )
+        
+      }
+
+
+
+    return (
+       <div className="content"> 
+           <ReactTable
+              data={Orders}
+              columns={columns}
+              showPageJump={true} 
+              filterable={true} 
+              minRows={15} 
+              defaultPageSize={14}  
+              loading={loading}
+              getTrProps={(state, rowInfo, column) => {
+                return {  
+                   onClick : () => {  
+                     OpenModal(rowInfo.row.id)
+                  }  ,
+
+                } 
+              }} 
+              onFetchData={ (state,instance) => {  
+                  setLoading(true);  
+                  
+                  getOrders();
+              
+               } }
+              
+            />  
+
+
+       <Dialog
+        open={isOpen}
+       
+        keepMounted
+        onClose={handleClick}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">Commande  : {code}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+              Merci de choisir une action !
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClick} color="primary">
+            Annuler
+          </Button>
+          <Button onClick={ConfirmOrder} color="primary">
+            Confirmer la commande
+          </Button> 
+          <Button onClick={DeleteOrder} color="primary">
+            Supprimer la commande
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+            
+       </div>
     )
-  }
 }
 
-export default Commandes;
+export default Commandes
+
+
+

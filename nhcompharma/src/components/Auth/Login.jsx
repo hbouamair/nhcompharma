@@ -89,7 +89,6 @@ export default function SignIn() {
  
      useEffect(() => {      
 
-
       if(localStorage.username !== "" && localStorage.password !== "" )  {
 
         setUsername(localStorage.username);

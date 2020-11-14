@@ -12,9 +12,7 @@ import Doctor from "./components/Auth/register/DocRegist/Form";
 import Pharmacie from "./components/Auth/register/PharmacieRegist/Form";
 import Particulier from "./components/Auth/register/ParticulRegist/Form";
 import Hospital from "./components/Auth/register/HospitalRegist/Form";
-import Home from "./components/Home/index"
 import Admin from "./components/Dashboard/index.js"
-
 import Home from "./components/Home/index" ; 
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
