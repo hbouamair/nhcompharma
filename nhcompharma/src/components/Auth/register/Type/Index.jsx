@@ -11,7 +11,8 @@ import {Link} from "react-router-dom"
 
 
 const CardExampleGroups = () => (
-
+ 
+ <div className="containercard">  
   <Grid className="grid" xl={12}>
   <Card.Group centered>
     <Card>
@@ -96,7 +97,8 @@ const CardExampleGroups = () => (
       </Card.Content>
     </Card>
   </Card.Group>
-  </Grid>
+  </Grid> 
+  </div>
 )
 
 export default CardExampleGroups
