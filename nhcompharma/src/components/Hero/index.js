@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import {Link} from "react-router-dom"
 import Sidebar from '../Sidebar';
 import {
   HeroContainer,
@@ -22,9 +22,9 @@ const Hero = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <HeroContent>
         <HeroItems>
-          <HeroH1>Wipping Out Infection</HeroH1>
-          <HeroP>Protect what matters</HeroP>
-          <HeroBtn>Commandez</HeroBtn>
+          <HeroH1>ÉLIMINER L'INFECTION</HeroH1>
+          <HeroP>PROTÉGER CE QUI COMPTE</HeroP>
+         <HeroBtn>Commandez</HeroBtn>
         </HeroItems>
       </HeroContent>
     </HeroContainer>

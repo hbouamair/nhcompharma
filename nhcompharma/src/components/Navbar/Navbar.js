@@ -39,7 +39,8 @@ class Navbar extends Component {
                     })}
                 </ul>
               <Link to="/login">   <but className="btno"> Sign Up</but></Link>
-                <Navi/>
+              {' '}
+              <div >  <Navi/></div>
             </nav>
         )
     }

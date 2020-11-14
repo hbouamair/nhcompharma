@@ -36,15 +36,18 @@ export const HeroItems = styled.div`
 `;
 
 export const HeroH1 = styled.h1`
-  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-size: clamp(4.5rem, 10vw, 6.5rem);
+  maxwidth:100%;
   margin-bottom: 1rem;
   box-shadow: 3px 5px #069543;
   letter-spacing: 3px;
+  font-family: 'Anton', sans-serif;
 `;
 
 export const HeroP = styled.p`
   font-size: clamp(2rem, 2.5vw, 3rem);
   margin-bottom: 2rem;
+  font-family: 'Indie Flower', cursive;
 `;
 
 export const HeroBtn = styled.button`

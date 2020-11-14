@@ -3,6 +3,7 @@
 }
 
 .btno {
+    font-family: 'Goldman', cursive;
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;
@@ -33,7 +34,7 @@
     transition: all 0.3s ease-out;
 }
 
-.btno--medium {
+.btn--medium {
     padding: 8px 20px;
     border-radius: 4px;
     font-size: 18px;

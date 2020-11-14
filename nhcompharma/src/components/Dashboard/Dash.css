@@ -4,3 +4,19 @@ height:75px;
 
 
 }
+
+.Profile{
+    box-shadow: 0 0 30;
+    text-align: center;
+    
+    padding: 8rem  ;
+   
+   
+}
+.title-profile{
+    margin-bottom: 50px;
+    
+}
+.buttonpro{
+    margin-top: 50px;
+}

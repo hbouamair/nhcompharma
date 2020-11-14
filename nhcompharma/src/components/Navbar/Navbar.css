@@ -52,10 +52,11 @@
 .logo{
     max-width: 100%;
     width: 90px;
-    margin-top: 13px;
+    margin-top: 19px;
 }
 
 .nav-links {
+    font-family: 'Goldman', cursive;
     color: #343838;
     text-decoration: none;
     padding: 0.5rem 1rem;
@@ -63,11 +64,13 @@
 
 .nav-links:hover {
     background-color: #3acbf7;
+    color:white;
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
 
 .fa-bars {
+    margin-top: 8px;
     color: #a5d296;
 }
 
@@ -79,7 +82,7 @@
     display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1343px) {
     .NavbarItems {
         position: relative;
     }
@@ -88,9 +91,9 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 500px;
+        height: 400px;
         position: absolute;
-        top: 60px;
+        top: 80px;
         left: -100%;
         opacity: 1;
         transition: all 0.5s ease;
@@ -138,7 +141,8 @@
     }
 
     .fa-times {
-        color: #fff;
+        color: #a5d296;
+        margin-top: 8px;
         font-size: 2rem;
     }
 
@@ -149,15 +153,15 @@
         margin: 2rem auto;
         border-radius: 4px;
         width: 80%;
-        background: #4ad9e4;
+        background: #a5d296;
         text-decoration: none;
         color: #fff;
         font-size: 1.5rem;
     }
 
     .nav-links-mobile:hover {
-        background: #a5d296;
-        color: #6568F4;
+        background: #467AA0;
+        color: #fff;
         transition: 250ms;
     }
 
