@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {Link} from "react-router-dom"
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box'; 
 import { Input } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -19,18 +20,6 @@ import Collapse from '@material-ui/core/Collapse';
 import { useForm } from "react-hook-form"; 
 import './login.css'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -49,6 +38,21 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  card: {
+    
+    borderRadius:'25px' ,
+    marginTop: theme.spacing(8),
+    border: '1px solid  #A5D297' ,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    boxShadow: '0 3px 5px 2px  #A5D297',
+   
+
+  },
+  link:{
+    color:'#343838',
   },
 }));
 
@@ -144,14 +148,14 @@ export default function SignIn() {
 
 
   return (
-    <Container component="main" maxWidth="xs"> 
-      {isOnline+""}
+    <Container className={classes.card} component="main" maxWidth="xs"> 
+      
       <CssBaseline /> 
       <Collapse in={open} style={{ width:'100%',}}>  
            <Alert severity="error" onClose ={ () => { setOpen(false)}  }>Utilisateur non trouvé !</Alert>
          </Collapse>
       <div className={classes.paper}>   
-        <Typography component="h1" className="bienvenue" variant="h5"> Bienvenue sur NH COM PHARMA </Typography>
+        <h2 component="h1" className="title-head"  variant="h5"> Bienvenue  </h2>
         <form className={classes.form}  onSubmit={ handleSubmit(onSubmit)}>
         <TextField
             variant="outlined"
@@ -159,7 +163,7 @@ export default function SignIn() {
             required
             fullWidth
             id="username"
-            placeholder="Username"
+            label="Nom d'utilisateur"
             name="username"
             autoComplete="username" 
             autoFocus 
@@ -173,7 +177,7 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            placeholder="Password"
+            label="Mot de passe"
             name="password"
             type="password"
             id="password" 
@@ -202,15 +206,15 @@ export default function SignIn() {
             type="submit"
              
           >
-            Sign In
+          S'identifier
           </Button>
           <Grid container>
             <Grid item xs>
              
             </Grid>
             <Grid item>
-              <Link to="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link to="/register" className={classes.link} variant="body">
+                {"Vous n'avez pas de compte ? Inscrivez-vous"}
               </Link>
             </Grid>
           </Grid>

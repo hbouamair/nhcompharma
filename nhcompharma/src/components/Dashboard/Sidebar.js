@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import AddShoppingCartSharpIcon from '@material-ui/icons/AddShoppingCartSharp';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
+import SupervisorAccountTwoToneIcon from '@material-ui/icons/SupervisorAccountTwoTone';
 import { NavLink, Link } from 'react-router-dom'
 
 
@@ -9,27 +13,35 @@ class Sidebar extends Component {
         <div className="sidebar-wrapper">
           <div className="logo">
             <Link to='/' className="simple-text">
-              Admin Dashboard
+            <SupervisorAccountTwoToneIcon  style={{ fontSize: 30 
+             }}/>
+              Admin 
             </Link>
           </div>
           <ul className="nav">
             <li className="nav-item">
               <NavLink className="nav-link" to='/dashboard'>
-                <i className="nc-icon nc-circle-09"></i>
-                <p>Products</p>
+              <i className="nc-icon">  <LocalMallOutlinedIcon  style={{ fontSize: 30 ,
+                padding :2 ,
+               }}/></i>
+                <p>Produits</p>
               </NavLink>
             </li>
            
             <li className="nav-item">
             <NavLink className="nav-link" to='/commandes'>
-              <i className="nc-icon nc-chart-pie-35"></i>
+            <i className="nc-icon">  <AddShoppingCartSharpIcon style={{ fontSize: 30 ,
+                padding :2 ,
+               }}/></i>
               <p>Commandes</p>
             </NavLink>
           </li>
            <li className="nav-item">
               <NavLink className="nav-link" to='/profile'>
-                <i className="nc-icon nc-circle-09"></i>
-                <p>User Profile</p>
+              <i className="nc-icon">  <AccountCircleOutlinedIcon style={{ fontSize: 30 ,
+                padding :2 ,
+               }}/></i>
+                <p>Profile</p>
               </NavLink>
             </li>
 

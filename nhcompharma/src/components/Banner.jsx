@@ -48,7 +48,7 @@ const Carousel = () => (
           <div className="inner">
             <h1>{item.title}</h1>
             <p></p>
-            <button className="button1">Commander</button>
+            <button onClick={event =>  window.location.href='/products'} className="button1">Commander</button>
           </div>
           
         </div>

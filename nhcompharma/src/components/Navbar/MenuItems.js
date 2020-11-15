@@ -14,13 +14,9 @@ export const MenuItems = [
         url: '/admin',
         cName: 'nav-links'
     },
+    
     {
-        title: 'Profile',
-        url: '/Profile',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Sign up',
+        title: 'Login',
         url: '/login',
         cName: 'nav-links-mobile'
     }

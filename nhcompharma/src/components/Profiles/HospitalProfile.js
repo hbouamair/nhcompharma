@@ -9,34 +9,38 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
+import SaveIcon from '@material-ui/icons/Save';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
+import './Profile.css'
 
 
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
-  button:{
+
+button:{
     margin:10,
 
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    
+ 
     padding: theme.spacing(6, 0, 6),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    
+    paddingBottom: theme.spacing(12),
   },
   card: {
-    border: '2px solid  #A5D297' ,
+    borderRadius:'23px' ,
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -64,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -75,13 +80,13 @@ export default function Album() {
     <React.Fragment>
       
       
-      <main>
+      <main id="hero-profile">
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-             Profile
-            </Typography>
+          <h1    className="title-profile" align="center" color="textPrimary" gutterBottom>
+          Profile
+         </h1>
             
             
           </Container>
@@ -114,7 +119,7 @@ export default function Album() {
                 required
                 fullWidth
                 id="email"
-                label="Nom  Responsable"
+                label="Nom   Responsable"
                 name="email"
                 autoComplete="email"
               />
@@ -169,7 +174,7 @@ export default function Album() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Mot de passe"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -190,7 +195,7 @@ export default function Album() {
                   className={classes.button}
                   startIcon={<SaveIcon />}
                 >
-                  Save
+                  Enregistrer 
                 </Button>
                    
                   </CardActions>

@@ -2,7 +2,7 @@
 
 body {
   font-family: sans-serif;
-  background: #ffff;
+  background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);;
   font-family: 'Lato', sans-serif;
 }
 
@@ -16,9 +16,7 @@ body {
 
 
 
-.smart {
-  padding-left: 50px;
-}
+
 
 
 
@@ -42,7 +40,7 @@ body {
   width: 35px;
   height: 35px;
   background: #3acbf7;
-  border-radius: 50%;
+  border-radius: 30%;
   color: #fff;
   line-height: 35px;
   cursor: pointer;
@@ -52,7 +50,17 @@ body {
 
 .dollor {
   display: inline-block;
-  margin-right: 15px;
+  padding :0 0 0 0 ;
+  
+
+  font-size: 20px;
+  font-weight: bold;
+}
+.dollor1 {
+  display: inline-block;
+  padding :0 0 0 0 ;
+  margin-right : 15px ;
+  
   font-size: 20px;
   font-weight: bold;
 }

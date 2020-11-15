@@ -6,6 +6,7 @@ import './Navbar.css'
 import {Link} from "react-router-dom"
 import logo from '../../assets/nh.png'
 import Navi from '../Navbar'
+import Connect from "./ConNav"
 
 
 
@@ -37,10 +38,13 @@ class Navbar extends Component {
                             
                         )
                     })}
+                     
                 </ul>
-              <Link to="/login">   <but className="btno"> Sign Up</but></Link>
+              <Link to="/login">   <but className="btno"> S'identifier</but></Link>
               {' '}
-              <div >  <Navi/></div>
+              <Connect/>
+              <Navi/>
+              
             </nav>
         )
     }
