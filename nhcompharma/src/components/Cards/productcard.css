@@ -1,0 +1,15 @@
+#img-prod:hover{
+    transform : scale(1.2);
+
+   
+}
+#img-prod{
+    transition: all 0.6s linear;
+}
+.title-product{
+    font-weight: 400px;
+    font-family: 'Gochi Hand', cursive;
+}
+.desc{
+    font-family: 'Jura', sans-serif;
+}

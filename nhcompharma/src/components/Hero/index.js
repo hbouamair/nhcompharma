@@ -24,7 +24,7 @@ const Hero = () => {
         <HeroItems>
           <HeroH1>ÉLIMINER L'INFECTION</HeroH1>
           <HeroP>PROTÉGER CE QUI COMPTE</HeroP>
-         <HeroBtn>Commandez</HeroBtn>
+         <HeroBtn onClick={event =>  window.location.href='/products'}>Commandez</HeroBtn>
         </HeroItems>
       </HeroContent>
     </HeroContainer>

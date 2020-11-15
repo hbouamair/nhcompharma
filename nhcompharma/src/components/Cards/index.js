@@ -13,13 +13,16 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { green, purple } from '@material-ui/core/colors'
+import { emphasize } from "@material-ui/core/styles/colorManipulator";
+import './productcard.css'
 
 const useStyles = makeStyles({
   root: {
     maxWidth: '100%' ,
     
-    padding:'30px',
-    marginBottom:'30px',
+    padding:'50px',
+    
+   
     
 
     
@@ -30,8 +33,21 @@ const useStyles = makeStyles({
     height: 400,
     width: 'center ', 
     maxWidth:'100%',
-    border: '4px solid  #00A7C8',
+    
+    
+  
+
   },
+  card:{
+    borderRadius:'25px' ,
+    maxWidth: '100%' ,
+    padding:'30px',
+    marginBottom:'30px',
+    border: '4px solid  #00A7C8',
+
+  }
+  
+  
 });
 
 
@@ -43,15 +59,15 @@ export default function MediaCard() {
       container className={classes.root} spacing={2}
     >
    
-    <Card  className={classes.root}>
+    <Card  className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
           image={require('../../assets/of2.png')}
-          title="Contemplative Reptile"
+          id="img-prod"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <h3 className="title-product" gutterBottom variant="h5" component="h2">
           Lingettes universelles pour les mains et les surfaces 200  <Chip
           variant="contained"
           size="small"
@@ -59,14 +75,14 @@ export default function MediaCard() {
           avatar={<Avatar>S</Avatar>}
           label="En Stock"
         />
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          </h3>
+          <p className="desc">
           Les lingettes universelles polyvalentes Clinell tuent au moins 99,99% des bactéries et virus. Ils
           peuvent être utilisés pour nettoyer et désinfecter les surfaces, les mains et l'équipement.
           Efficace à partir de seulement 10 secondes et peut être utilisé sur des mains visiblement sales. Notre
           formulation est testée dermatologiquement et contient de l'aloe vera et un hydratant pour être doux
           pour la peau. Reconnu par les professionnels de la santé.
-          </Typography>
+          </p>
         </CardContent>
         
       </CardActionArea>
@@ -81,30 +97,31 @@ export default function MediaCard() {
     </Card>
     
     
-    <Card className={classes.root}>
+    <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
           image={require('../../assets/of1.png')}
-          title="Contemplative Reptile"
+          id="img-prod"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <h3 className="title-product" gutterBottom variant="h5" component="h3">
           Lingettes universelles pour les mains et les surfaces 200  <Chip
-          variant="contained"
+          
           size="small"
-          color="primary"
-          avatar={<Avatar>S</Avatar>}
-          label="En Stock"
+          color="secondary"
+        variant="outlined"
+          avatar={<Avatar>V</Avatar>}
+          label="Vide"
         />
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          </h3>
+          <p  className="desc">
           Les lingettes universelles polyvalentes Clinell tuent au moins 99,99% des bactéries et virus. Ils
           peuvent être utilisés pour nettoyer et désinfecter les surfaces, les mains et l'équipement.
           Efficace à partir de seulement 10 secondes et peut être utilisé sur des mains visiblement sales. Notre
           formulation est testée dermatologiquement et contient de l'aloe vera et un hydratant pour être doux
           pour la peau. Reconnu par les professionnels de la santé.
-          </Typography>
+          </p>
         </CardContent>
         
       </CardActionArea>
@@ -118,15 +135,15 @@ export default function MediaCard() {
     </Card>
   
    
-    <Card className={classes.root}>
+    <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
           image={require('../../assets/of.png')}
-          title="Contemplative Reptile"
+          id="img-prod"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <h3 className="title-product"  gutterBottom variant="h5" component="h2">
           Lingettes universelles pour les mains et les surfaces 200 <Chip
           variant="contained"
           size="small"
@@ -134,14 +151,14 @@ export default function MediaCard() {
           avatar={<Avatar>S</Avatar>}
           label="En Stock"
         />
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          </h3>
+          <p  className="desc">
           Les lingettes universelles polyvalentes Clinell tuent au moins 99,99% des bactéries et virus. Ils
           peuvent être utilisés pour nettoyer et désinfecter les surfaces, les mains et l'équipement.
           Efficace à partir de seulement 10 secondes et peut être utilisé sur des mains visiblement sales. Notre
           formulation est testée dermatologiquement et contient de l'aloe vera et un hydratant pour être doux
           pour la peau. Reconnu par les professionnels de la santé.
-          </Typography>
+          </p>
         </CardContent>
 
         

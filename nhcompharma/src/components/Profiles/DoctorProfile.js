@@ -15,6 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
+import { CenterFocusStrong } from '@material-ui/icons';
+import './Profile.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,19 +29,19 @@ button:{
 
   },
   heroContent: {
-    backgroundImage: require('../../assets/carou1.jpeg'),
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    
+ 
+    padding: theme.spacing(6, 0, 6),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
   cardGrid: {
     
-    paddingBottom: theme.spacing(8),
+    paddingBottom: theme.spacing(12),
   },
   card: {
-    border: '2px solid  #A5D297' ,
+    borderRadius:'23px' ,
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -67,6 +69,7 @@ button:{
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -78,13 +81,11 @@ export default function Album() {
     <React.Fragment>
       
       
-      <main>
+      <main id="hero-profile">
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <h1  style= {{ 
-
-            }}  component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <h1    className="title-profile" align="center" color="textPrimary" gutterBottom>
              Profile
             </h1>
             
@@ -109,7 +110,7 @@ export default function Album() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Nom"
                 autoFocus
               />
             </Grid>
@@ -119,7 +120,7 @@ export default function Album() {
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                label="Prenom"
                 name="lastName"
                 autoComplete="lname"
               />
@@ -131,7 +132,7 @@ export default function Album() {
                 fullWidth
                 id="email"
                 disabled
-                label="Username"
+                label="Nom d'utilisateur"
                 name="email"
                 autoComplete="email"
               />
@@ -142,7 +143,7 @@ export default function Album() {
                 required
                 fullWidth
                 id="email"
-                label="Adresse Cabinet"
+                label="Adresse du cabinet"
                 name="email"
                 autoComplete="email"
               />
@@ -186,7 +187,7 @@ export default function Album() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Mot de passe"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -207,7 +208,7 @@ export default function Album() {
                   className={classes.button}
                   startIcon={<SaveIcon />}
                 >
-                  Save
+                 Enregistrer
                 </Button>
                    
                   </CardActions>
