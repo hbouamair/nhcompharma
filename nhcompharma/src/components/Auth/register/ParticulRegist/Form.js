@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,11 +11,16 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container'; 
+import { useForm } from "react-hook-form" ;  
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+import SERVER_URL from '../../../variables/server_url';
+import { FaGlassMartiniAlt } from 'react-icons/fa';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textSecondary" align="center"> 
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -33,8 +38,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
+  avatar : { 
+    margin: theme.spacing(1) ,        
+    
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
@@ -47,10 +53,68 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-  const classes = useStyles();
+  const classes = useStyles();  
+
+  const [ nom , setnom ] = useState("");   
+  const [ prenom , setprenom ] = useState("");  
+  const [ username , setusername ] = useState("");  
+  const [ adresse , setadresse ] = useState("");  
+  const [ cin , setcin ] = useState("");  
+  const [ telephone , settelephone ] = useState("");  
+  const [ email , setemail ] = useState("");  
+  const [ password , setpassword] = useState("");   
+
+  const { handleSubmit, register, errors } = useForm();    
+
+  const [ emailError , setemailError ] = useState("");  
+  const [ passwordError , setpasswordError] = useState("");  
+
+  
+  const onSubmit = () => {  
+
+     Login();    
+
+    //const user = { "nom" : nom , "prenom" : prenom , "username" : username , "cin" : cin , "telephone" : telephone , "email" : email , "password" : password , "Role" :"USER" }
+    //alert(JSON.stringify(user));
+    
+   }; 
+
+  const Login = () => { 
+
+      const user = { "nom" : nom , "prenom" : prenom , "username" : username  , "cin" : cin , "telephone" : telephone , "email" : email , "password" : password , "role" :"USER" }
+       
+
+          fetch(SERVER_URL+"signup/particulier" ,{ 
+          method : 'POST' ,  
+          headers : {'Content-Type' : 'application/json' } , 
+          body : JSON.stringify(user)
+          })  
+           .then(r => r.json()
+             .then(data =>  
+                {    
+                  if (r.status >= 200 && r.status <= 299) {      
+                     toast.success("Votre Compte a bien été créé"); 
+                  } else {      
+                     
+                    toast.error(data.error);
+                 }
+                
+             }
+        
+           
+           ))
+           .catch((error) => {    
+
+  
+
+     }); 
+   
+  }
+  
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs"> 
+       <ToastContainer />
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -59,29 +123,33 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form}  onSubmit={ handleSubmit(onSubmit)} >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="nom"
+                name="nom"
                 variant="outlined"
-                required
+               required={true}
                 fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
+                id="nom"
+                label="Nom"
+                autoFocus    
+                onChange={(e) => { setnom(e.target.value);  }}
+
+                
+              />    
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id="prenom"
+                label="Prénom"
+                name="prenom"
+                autoComplete="lname" 
+                onChange={(e) => {  setprenom(e.target.value);  }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -89,10 +157,12 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Username"
-                name="email"
-                autoComplete="email"
+                id="login"
+                label="Login"
+                name="username" 
+                onChange={(e) => {  setusername(e.target.value);  }}
+                autoComplete="login" 
+                
               />
             </Grid>
             <Grid item xs={12}>
@@ -100,10 +170,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Adresse "
-                name="email"
-                autoComplete="email"
+                id="adresse"
+                label="Adresse"
+                name="adresse"
+                autoComplete="adresse" 
+                onChange={(e) => {  setadresse(e.target.value);  }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -111,21 +182,23 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="CIN"
-                name="email"
-                autoComplete="email"
+                id="cin"
+                label="CIN" 
+                name="cin"
+                autoComplete="cin" 
+                onChange={(e) => {  setcin(e.target.value);  }}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <TextField 
+                 required
                 variant="outlined"
-                required
                 fullWidth
-                id="email"
-                label="Téléphone "
-                name="email"
-                autoComplete="email"
+                id="telephone"
+                label="Téléphone"
+                name="telephone"
+                autoComplete="telephone"  
+                onChange={(e) => {  settelephone(e.target.value);  }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -136,29 +209,33 @@ export default function SignUp() {
                 id="email"
                 label="Email"
                 name="email"
-                autoComplete="email"
+                autoComplete="email" 
+                onChange={(e) => {  setemail(e.target.value);  }}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
-                fullWidth
+                fullWidth 
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                autoComplete="current-password" 
+                onChange={(e) => {  setpassword(e.target.value);  }}
               />
             </Grid>
             
-          </Grid>
+          </Grid> 
+
+    
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+           className={classes.submit}
           >
             Sign Up
           </Button>

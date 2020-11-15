@@ -24,7 +24,7 @@
     "react-bootstrap": "^1.4.0",
     "react-chartist": "^0.14.3",
     "react-dom": "^16.14.0",
-    "react-hook-form": "^6.11.1",
+    "react-hook-form": "^6.11.2",
     "react-icons": "^3.11.0",
     "react-redux": "^7.2.2",
     "react-redux-form": "^1.16.14",
