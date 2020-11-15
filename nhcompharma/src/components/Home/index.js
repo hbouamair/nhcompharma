@@ -18,7 +18,7 @@ function Home() {
       <GlobalStyle />
       <Hero />
       <Products />
-      <SideCarousel/>
+      <Banner/>
       <Footer/> 
       <Chat />
     </Router>
