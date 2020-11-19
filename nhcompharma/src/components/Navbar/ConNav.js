@@ -27,7 +27,9 @@ export default function MenuAppBar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl); 
+
+  
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -38,8 +40,12 @@ export default function MenuAppBar() {
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+       sessionStorage.removeItem("jwt");  
+       sessionStorage.removeItem("currentuser");
+       window.location.reload(false);
+  }; 
+
+  
 
   return (
     <div >
@@ -48,8 +54,8 @@ export default function MenuAppBar() {
         <Toolbar>
          
          
-          {auth && (
-            <div>
+          {sessionStorage.getItem("jwt") && (
+            <div> 
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -58,7 +64,7 @@ export default function MenuAppBar() {
                 color="inherit"
               >
                 <AccountCircle  style={{ fontSize: '35px' , color: green[500] }}/>
-              </IconButton>
+            </IconButton> 
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -73,7 +79,8 @@ export default function MenuAppBar() {
                 }}
                 open={open}
                 onClose={handleClose}
-              >
+              > 
+              
                 <MenuItem onClick={event =>  window.location.href='/profile'}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
               </Menu>

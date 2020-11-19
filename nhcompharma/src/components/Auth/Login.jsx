@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box'; 
@@ -17,8 +17,13 @@ import Container from '@material-ui/core/Container';
 import  SERVER_URL from '../variables/server_url';   
 import { Alert } from '@material-ui/lab'; 
 import Collapse from '@material-ui/core/Collapse'; 
-import { useForm } from "react-hook-form"; 
-import './login.css'
+import { useForm } from "react-hook-form";  
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+import './login.css' ;   
+
+
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -65,7 +70,9 @@ export default function SignIn() {
     password : "" , 
     isChecked : false 
    } 
-  ) 
+  )  
+
+
 
   const [open , setOpen ] =useState(false);  
   const { handleSubmit, register, errors } = useForm(); 
@@ -104,7 +111,34 @@ export default function SignIn() {
       }     
 
 
-     },[]);      
+     },[]);     
+     
+     
+
+     const getCurrentUser = () => {  
+      const jwt = sessionStorage.getItem("jwt");
+      fetch(SERVER_URL+ "currentuser", {
+          method: 'GET' , 
+          headers : {'Authorization' : jwt  , 
+          'Content-Type' : 'application/json'
+        }  ,
+
+     })
+      .then(res => res.json())
+      .then(data =>  
+       {
+          sessionStorage.setItem("currentuser",JSON.stringify(data));   
+
+       
+
+         
+ 
+      })
+      .catch(err => console.error(err))
+
+       
+
+     }
 
 
 
@@ -119,13 +153,23 @@ export default function SignIn() {
           const jwtToken = res.headers.get('Authorization');
           if (jwtToken !== null) {     
           
-              sessionStorage.setItem('jwt', jwtToken); 
+              sessionStorage.setItem('jwt', jwtToken);  
+              getCurrentUser();  
+              
               console.log("authenticated successfully") ;  
               if(isChecked){
               localStorage.setItem('username',  username ) ; 
               localStorage.setItem('password',  password ) ;    
-              localStorage.setItem('isChecked', isChecked ) ; 
+              localStorage.setItem('isChecked', isChecked ) ;  
+              
+              setTimeout(() => {  
+                
+                  window.location.href="/";  
 
+               },1000)
+             
+
+            
               }
               setDisabled(false);  
 
@@ -149,7 +193,7 @@ export default function SignIn() {
 
   return (
     <Container className={classes.card} component="main" maxWidth="xs"> 
-      
+      <ToastContainer />
       <CssBaseline /> 
       <Collapse in={open} style={{ width:'100%',}}>  
            <Alert severity="error" onClose ={ () => { setOpen(false)}  }>Utilisateur non trouvé !</Alert>

@@ -35,12 +35,12 @@ class Navbar extends Component {
                                 </a>
                                 
                             </li>
-                            
+
                         )
                     })}
                      
                 </ul>
-              <Link to="/login">   <but className="btno"> S'identifier</but></Link>
+              <Link to="/login"> <but className="btno">S'identifier</but></Link>
               {' '}
               <Connect/>
               <Navi/>

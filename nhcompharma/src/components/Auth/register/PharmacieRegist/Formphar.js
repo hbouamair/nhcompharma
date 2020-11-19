@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react';
+import React , {useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -48,36 +48,83 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+})); 
 
-export default function SignUp() {
-  const classes = useStyles();     
+  
+  
+
+
+
+
+export default function Pharma() {
+  const classes = useStyles(); 
+
 
   const [ username , setusername ] = useState("");  
   const [ email , setemail ] = useState("");  
-  const [ password , setpassword] = useState("");    
-  const [nom_clinique , setnomcli] = useState("");
-  const [nom_resp_clinique, setnom_resp_clinique] = useState("");
-  const [prenom_resp_clinique,setprenom_resp_clinique] = useState(""); 
-  const [ice_clinique, setice_clinique] = useState("");
-  const [adresse_clinique, setadresse_clinique] = useState("");
-  const [phone_num_clinique, setphone_num_clinique] = useState(""); 
+  const [ password , setpassword] = useState("");  
+  const [ nom_pharmacie, setnom_pharmacie] = useState("");
+  const [ phoneNumPharmacie , setphoneNumPharmacie] = useState(""); 
+  const [ adressePharmacie , setadressePharmacie ] = useState("") ;  
+  const [prenom_resp_pharmacie, setprenom_resp_pharmacie] = useState("") ;
+  const [nom_resp_pharmacie, setnom_resp_pharmacie] = useState(""); 
+  const [ice_pharmacie, setice_pharmacie] = useState("");    
 
-  
-  const { handleSubmit, register, errors } = useForm(); 
-  
+  const { handleSubmit, register, errors } = useForm();    
+
+ 
 
   const onSubmit = () => {  
 
-   // Login();    
+    Login();     
 
-  
-   
-  }; 
+  };  
 
+  const Login = () => { 
+
+   const user = { 
+    "username" : username ,  
+    "email" : email ,  
+    "password" : password , 
+    "nom_pharmacie" : nom_pharmacie ,  
+    "phoneNum_pharmacie" : phoneNumPharmacie ,  
+    "adresse_pharmacie" : adressePharmacie , 
+    "prenom_resp_pharmacie" : prenom_resp_pharmacie ,  
+    "nom_resp_pharmacie" : nom_resp_pharmacie , 
+    "ice_pharmacie" : ice_pharmacie , 
+    "role" : "USER" 
+   }
+
+        fetch(SERVER_URL+"signup/pharmacie" ,{ 
+        method : 'POST' ,  
+        headers : {'Content-Type' : 'application/json' } , 
+        body : JSON.stringify(user)
+        })  
+         .then(r => r.json()
+           .then(data =>  
+              {    
+                if (r.status >= 200 && r.status <= 299) {      
+                   toast.success("Votre Compte a bien été créé"); 
+                } else {      
+                   
+                  toast.error(data.error);
+               }
+              
+           }
+      
+         
+         ))
+         .catch((error) => {    
+
+
+
+   }); 
+ 
+}
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs"> 
+      <ToastContainer />
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -86,32 +133,31 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={ handleSubmit(onSubmit)} >
+        <form className={classes.form}  onSubmit={ handleSubmit(onSubmit)} >
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="nom_clinique"
+                autoComplete="username"
+                name="nom_resp_pharmacie"
                 variant="outlined"
                 required
                 fullWidth
-                id="Nom du Clinique"
-                label="Nom du Clinique"
-                autoFocus 
-                onChange={(e) => { setnomcli(e.target.value);  }}
+                id="firstName" 
+                onChange={(e) => { setnom_resp_pharmacie(e.target.value);  }}
+                label="Nom du responsable"
+                autoFocus
               />
             </Grid>
-            
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email" 
-                onChange={(e) => { setemail(e.target.value);  }}
+                id="prenom"
+                label="Prénom du pharmacien"
+                name="prenom_resp_pharmacie" 
+                onChange={(e) => { setprenom_resp_pharmacie(e.target.value);}}
+                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
@@ -119,11 +165,23 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="login"
+                id="username"
                 label="Login"
-                name="username"
-                autoComplete="username" 
-                onChange={(e) => { setusername(e.target.value);  }}
+                name="username" 
+                onChange={(e) => { setusername(e.target.value);}}
+                autoComplete="username"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="adresse"
+                label="Adresse de la pharmacie" 
+                onChange={(e) => { setadressePharmacie(e.target.value);}}
+                name="adressePharmacie"
+                autoComplete="adresse"
               />
             </Grid>
             <Grid item xs={12}>
@@ -133,9 +191,9 @@ export default function SignUp() {
                 fullWidth
                 id="ice"
                 label="ICE"
-                name="ice_clinique"
-                autoComplete="ice" 
-                onChange={(e) => { setice_clinique(e.target.value);  }}
+                name="ice_pharmacie" 
+                onChange={(e) => { setice_pharmacie(e.target.value);}}
+                autoComplete="ice"
               />
             </Grid>
             <Grid item xs={12}>
@@ -143,66 +201,49 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="tele"
+                id="phone"
                 label="Téléphone / Fax"
-                name="telephone"
-                autoComplete="tele" 
-                onChange={(e) => { setphone_num_clinique(e.target.value);  }}
+                name="phoneNumPharmacie" 
+                onChange={(e) => { setphoneNumPharmacie(e.target.value);}}
+                autoComplete="phone"
               />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="nom_responsable"
-                label="Nom du responsable"
-                name="nom_resp_clinique"
-                autoComplete="nom_resp_clinique" 
-                onChange={(e) => { setnom_resp_clinique(e.target.value);  }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="prenom_resp_clinique"
-                label="Prenom du responsable"
-                type="text"
-                id="prenom_resp_clinique"
-                autoComplete="prenom_resp_clinique" 
-                onChange={(e) => { setprenom_resp_clinique(e.target.value);  }} 
-              /> 
-
-            </Grid>  
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="adresse_clinique"
-                label="Adresse du clinique"
-                type="text"
-                id="adresse_clinique"
-                autoComplete="adresse_clinique"  
-                onChange={(e) => { setadresse_clinique(e.target.value);  }}
-              /> 
-
             </Grid> 
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                name="Password"
-                label="Mot de passe"
+                id="nom_pharmacie"
+                label="Nom de la Pharmacie"
+                name="nom_pharmacie" 
+                onChange={(e) => { setnom_pharmacie(e.target.value);}}
+                autoComplete="nom_pharmacie"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email" 
+                onChange={(e) => { setemail(e.target.value);}}
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
                 type="password"
-                id="password"
-                autoComplete="password"  
-                onChange={(e) => { setpassword(e.target.value);  }}
-              /> 
-
+                id="password" 
+                onChange={(e) => { setpassword(e.target.value);}}
+                autoComplete="current-password"
+              />
             </Grid>
             
           </Grid>

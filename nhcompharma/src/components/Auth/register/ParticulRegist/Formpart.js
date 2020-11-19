@@ -52,17 +52,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
-  const classes = useStyles();  
-
-  const [ nom , setnom ] = useState("");   
-  const [ prenom , setprenom ] = useState("");  
-  const [ username , setusername ] = useState("");  
-  const [ adresse , setadresse ] = useState("");  
-  const [ cin , setcin ] = useState("");  
-  const [ telephone , settelephone ] = useState("");  
-  const [ email , setemail ] = useState("");  
-  const [ password , setpassword] = useState("");   
+export default function Part() {
+  const classes = useStyles();   
+  
+  const [ nom , setnom ] = useState("") ;   
+  const [ prenom , setprenom ] = useState("") ;  
+  const [ username , setusername ] = useState("") ;   
+  const [ cin , setcin ] = useState("") ;  
+  const [ telephone , settelephone ] = useState("") ;  
+  const [ email , setemail ] = useState("") ;  
+  const [ password , setpassword] = useState("") ;   
 
   const { handleSubmit, register, errors } = useForm();    
 
@@ -74,8 +73,6 @@ export default function SignUp() {
 
      Login();    
 
-    //const user = { "nom" : nom , "prenom" : prenom , "username" : username , "cin" : cin , "telephone" : telephone , "email" : email , "password" : password , "Role" :"USER" }
-    //alert(JSON.stringify(user));
     
    }; 
 
@@ -111,7 +108,6 @@ export default function SignUp() {
    
   }
   
-
   return (
     <Container component="main" maxWidth="xs"> 
        <ToastContainer />
@@ -130,14 +126,12 @@ export default function SignUp() {
                 autoComplete="nom"
                 name="nom"
                 variant="outlined"
-               required={true}
+                required={true}
                 fullWidth
                 id="nom"
                 label="Nom"
                 autoFocus    
-                onChange={(e) => { setnom(e.target.value);  }}
-
-                
+                onChange={(e) => { setnom(e.target.value); }}       
               />    
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -165,7 +159,7 @@ export default function SignUp() {
                 
               />
             </Grid>
-            <Grid item xs={12}>
+           {/* <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
@@ -174,9 +168,10 @@ export default function SignUp() {
                 label="Adresse"
                 name="adresse"
                 autoComplete="adresse" 
-                onChange={(e) => {  setadresse(e.target.value);  }}
-              />
-            </Grid>
+                onChange={(e) => {  setadresse(e.target.value);  }} 
+                </Grid>
+            /> */}
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"

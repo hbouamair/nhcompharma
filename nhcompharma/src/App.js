@@ -8,16 +8,19 @@ import ProductContextProvider from "./Global/productContext"
 import CartContextProvider from "./Global/cartContext"
 import login from "./components/Auth/Login";
 import Form from "./components/Auth/register/Type/Index";
-import Doctor from "./components/Auth/register/DocRegist/Form";
-import Pharmacie from "./components/Auth/register/PharmacieRegist/Form";
-import Particulier from "./components/Auth/register/ParticulRegist/Form";
-import Hospital from "./components/Auth/register/HospitalRegist/Form";
+import Doctor from "./components/Auth/register/DocRegist/Formdoc";
+import Pharmacie from "./components/Auth/register/PharmacieRegist/Formphar";
+import Particulier from "./components/Auth/register/ParticulRegist/Formpart";
+import Hospital from "./components/Auth/register/HospitalRegist/Formhop";
 import Admin from "./components/Dashboard/index.js"
 import Home from "./components/Home/index" ; 
-import Profile from "./components/Profiles/DoctorProfile"
+import Profile from "./components/Profiles/DoctorProfile" 
+import Toprofile from "./components/Auth/register/Toprofile" ; 
+
 
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import Profilebyuser from './components/Auth/register/Profilebyuser';
 
 function App() {    
 
@@ -53,8 +56,9 @@ useEffect(() => {
           <Route path = "/Clinique" exact component={Hospital}/>
           <Route path = "/Particulier" exact component={Particulier}/>
           <Route path = "/Admin" exact component={Admin}/>
-          <Route path = "/products" exact component={Products}/>
-          <Route path = "/Profile" exact component={Profile}/>
+          <Route path = "/products" exact component={Products}/> 
+          <Toprofile path = "/profile" exact component = {Profilebyuser}  />
+        
           
 
         </Switch>
