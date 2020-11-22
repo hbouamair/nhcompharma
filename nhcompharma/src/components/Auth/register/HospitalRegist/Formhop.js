@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form" ;
 import { ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 import SERVER_URL from '../../../variables/server_url';
+import HorizontalLabelPositionBelowStepper from '../Type/HorizontalLinearStepper';
 
 function Copyright() {
   return (
@@ -50,18 +51,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function Hos() {
   const classes = useStyles();     
 
   const [ username , setusername ] = useState("");  
   const [ email , setemail ] = useState("");  
   const [ password , setpassword] = useState("");    
-  const [nom_clinique , setnomcli] = useState("");
-  const [nom_resp_clinique, setnom_resp_clinique] = useState("");
-  const [prenom_resp_clinique,setprenom_resp_clinique] = useState(""); 
-  const [ice_clinique, setice_clinique] = useState("");
-  const [adresse_clinique, setadresse_clinique] = useState("");
-  const [phone_num_clinique, setphone_num_clinique] = useState(""); 
+  const [ nom_clinique , setnomcli] = useState("");
+  const [ nom_resp_clinique, setnom_resp_clinique] = useState("");
+  const [ prenom_resp_clinique,setprenom_resp_clinique] = useState(""); 
+  const [ ice_clinique, setice_clinique] = useState("");
+  const [ adresse_clinique, setadresse_clinique] = useState("");
+  const [ phone_num_clinique, setphone_num_clinique] = useState(""); 
 
   
   const { handleSubmit, register, errors } = useForm();  
@@ -107,7 +108,8 @@ export default function SignUp() {
 
   return (
     <Container component="main" maxWidth="xs"> 
-       <ToastContainer />
+       <ToastContainer /> 
+       <HorizontalLabelPositionBelowStepper activestep={1} />
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

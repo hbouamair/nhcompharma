@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form" ;
 import { ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 import SERVER_URL from '../../../variables/server_url';
+import HorizontalLabelPositionBelowStepper from '../Type/HorizontalLinearStepper';
 
 function Copyright() {
   return (
@@ -123,7 +124,8 @@ export default function Pharma() {
 }
 
   return (
-    <Container component="main" maxWidth="xs"> 
+    <Container component="main" maxWidth="xs">  
+      <HorizontalLabelPositionBelowStepper activestep={1} />
       <ToastContainer />
       <CssBaseline />
       <div className={classes.paper}>

@@ -7,12 +7,14 @@ import img2 from '../../../../assets/pharma.png'
 import img3 from '../../../../assets/hospital.png'
 import img4 from '../../../../assets/partic.png'
 import {Link} from "react-router-dom"
+import HorizontalLabelPositionBelowStepper from './HorizontalLinearStepper';
 
 
 
 const CardExampleGroups = () => (
- 
- <div className="containercard">  
+
+ <div className="containercard">   
+ <HorizontalLabelPositionBelowStepper activestep={0} />
   <Grid className="grid" xl={12}>
   <Card.Group centered>
     <Card>
@@ -23,7 +25,7 @@ const CardExampleGroups = () => (
           src={img2}
         />
         <Card.Header>Pharmacie</Card.Header>
-        <Card.Meta>New User</Card.Meta>
+        
         
       </Card.Content>
       <Card.Content extra>
@@ -43,8 +45,8 @@ const CardExampleGroups = () => (
           size='mini'
           src={img1}
         />
-        <Card.Header>Doctor</Card.Header>
-        <Card.Meta>New User</Card.Meta>
+        <Card.Header>Medcin</Card.Header>
+        
        
       </Card.Content>
       <Card.Content extra>
@@ -64,7 +66,7 @@ const CardExampleGroups = () => (
           src={img3}
         />
         <Card.Header>Clinique</Card.Header>
-        <Card.Meta>New User</Card.Meta>
+        
         
       </Card.Content>
       <Card.Content extra>
@@ -84,7 +86,7 @@ const CardExampleGroups = () => (
           src={img4}
         />
         <Card.Header>Particulier</Card.Header>
-        <Card.Meta>New User</Card.Meta>
+     
         
       </Card.Content>
       <Card.Content extra>

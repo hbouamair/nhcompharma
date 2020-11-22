@@ -1,10 +1,12 @@
-import React, {useContext} from "react"
+import React, {useContext , useState , useEffect } from "react"
 import { productContext } from "../Global/productContext"
 import {cartContext} from "../Global/cartContext"
 import Banner from "./Banner"
-const Products = () => {
+const Products = () => { 
+
    const {products} = useContext(productContext);
-   const {dispatch} = useContext(cartContext);
+   const {dispatch} = useContext(cartContext);  
+
     return(
         <>
         <Banner />
@@ -19,9 +21,8 @@ const Products = () => {
                 <div className="proName">
                  <h4>{product.name}</h4>
                 </div>
-              
             </div>
-            <div className="proButton" onClick={() => dispatch({type: 'ADD_TO_CART', id: product.id, products})}>
+            <div className="proButton" onClick={() => dispatch({type:'ADD_TO_CART', id: product.id, products})}>
                  <button className="buyNow" >add to cart</button>
                </div>
              

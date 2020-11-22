@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SERVER_URL from '../../../variables/server_url';
 import { FaGlassMartiniAlt } from 'react-icons/fa';
+import HorizontalLabelPositionBelowStepper from '../Type/HorizontalLinearStepper';
 
 function Copyright() {
   return (
@@ -109,7 +110,8 @@ export default function Part() {
   }
   
   return (
-    <Container component="main" maxWidth="xs"> 
+    <Container component="main" maxWidth="xs">  
+      <HorizontalLabelPositionBelowStepper activestep={1} />
        <ToastContainer />
       <CssBaseline />
       <div className={classes.paper}>

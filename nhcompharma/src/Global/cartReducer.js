@@ -20,7 +20,6 @@ export const CartReducer = (state, action) => {
         case 'DELETE_PRODUCT':
             const filtered = shoppingCart.filter(cart => cart.id !== action.id);
             product = shoppingCart.find(cart => cart.id === action.id);
-            // setAllPrice(allPrice - product.price * product.qty);
             updatedPrice = totalPrice - product.price * product.qty;
             updatedQty = qty - product.qty;
             return {shoppingCart: [...filtered], totalPrice: updatedPrice, message: '', qty: updatedQty}
@@ -56,7 +55,11 @@ export const CartReducer = (state, action) => {
 
        case 'EMPTY':
         return {shoppingCart: [], totalPrice: 0, message: '', qty: 0}
-        break;
+        break; 
+
+       case 'UPDATE' : 
+         return {...state , ...action.playload}  
+       break ; 
     default: 
     return state;
 
