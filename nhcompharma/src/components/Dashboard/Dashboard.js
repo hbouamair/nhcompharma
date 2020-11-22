@@ -282,7 +282,9 @@ function Dashboard() {
                 <div className="card-body ">
                 <div style={{ float: "right" }}>
                 <Fab
+                size="small"
                   onClick={handleOpen}
+                  className="btn-ajout"
                   color="primary"
                   aria-label="add"
                 >
@@ -384,7 +386,8 @@ function Dashboard() {
                margin="normal"
                variant="outlined"
             /> 
-            <Button autoFocus type="submit" color="primary">
+            <Button autoFocus variant="contained"
+            color="primary" type="submit" >
                 Ajouter      
             </Button> 
         </form>
