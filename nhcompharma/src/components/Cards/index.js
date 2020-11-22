@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState , useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -6,15 +6,18 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import { Grid, Paper } from '@material-ui/core';
-import { createMuiTheme, withStyles, ThemeProvider } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { green, purple } from '@material-ui/core/colors'
-import { emphasize } from "@material-ui/core/styles/colorManipulator";
-import './productcard.css'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'; 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle'; 
+import {cartContext} from "../../Global/cartContext" ; 
+import { productContext } from "../../Global/productContext" ;
+
 
 const useStyles = makeStyles({
   root: {
@@ -51,126 +54,118 @@ const useStyles = makeStyles({
 });
 
 
-export default function MediaCard() {
-  const classes = useStyles();
+export default function MediaCard(props) {
+  const classes = useStyles();  
+
+  const [open, setOpen] =  useState(false);
+
+
+  const  greeting = ()=> {
+    setOpen(true);
+    
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };  
+
+  const {dispatch} = useContext(cartContext); 
+  const {products} = useContext(productContext);
+
+   const Displayproducts = () => {  
+
+    if(props.produits.length == 0 ) { 
+      return  <p>Aucun produit n'est disponible pour le moment</p>
+        }else { 
+            
+          return (    
+     
+        props.produits.map((produit) => {  
+               
+           return(  
+            <Card  className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={"data:image/jpg;base64,"+produit.photo}
+                id="img-prod"
+              /> 
+              
+              <CardContent>
+                <h3 className="title-product" gutterBottom variant="h5" component="h2">
+                {produit.nom} <Chip
+                variant="contained"
+                size="small"
+                color="primary"
+                avatar={<Avatar>S</Avatar>}
+                label={produit.stock == 0 ? "En rupture de stock" : "Disponible"}
+              />
+                </h3>
+                <p className="desc">
+                {produit.description}
+                </p>
+              </CardContent>
+              
+            </CardActionArea>
+            <CardActions>
+              <Button   
+              variant="contained"  
+              disableRipple size="small"  
+              color="primary" 
+              disabled = {produit.stock == 0} 
+              onClick={ () =>{ dispatch({type: 'ADD_TO_CART', id: produit.id, products});
+              handleClickOpen(); 
+             
+            } } 
+              > 
+              <ShoppingCartIcon />
+              {' '}
+               Ajouter Au panier 
+              </Button>
+             
+            </CardActions>
+          </Card> 
+          ); 
+       }) 
+   )  
+  }
+
+   }
 
   return (
       <Grid 
       container className={classes.root} spacing={2}
     >
-   
-    <Card  className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={require('../../assets/of2.png')}
-          id="img-prod"
-        />
-        <CardContent>
-          <h3 className="title-product" gutterBottom variant="h5" component="h2">
-          Lingettes universelles pour les mains et les surfaces 200  <Chip
-          variant="contained"
-          size="small"
-          color="primary"
-          avatar={<Avatar>S</Avatar>}
-          label="En Stock"
-        />
-          </h3>
-          <p className="desc">
-          Les lingettes universelles polyvalentes Clinell tuent au moins 99,99% des bactéries et virus. Ils
-          peuvent être utilisés pour nettoyer et désinfecter les surfaces, les mains et l'équipement.
-          Efficace à partir de seulement 10 secondes et peut être utilisé sur des mains visiblement sales. Notre
-          formulation est testée dermatologiquement et contient de l'aloe vera et un hydratant pour être doux
-          pour la peau. Reconnu par les professionnels de la santé.
-          </p>
-        </CardContent>
-        
-      </CardActionArea>
-      <CardActions>
-        <Button  variant="contained" disableRipple size="small" color="primary">
-        <ShoppingCartIcon />
-        {' '}
-         Ajouter Au panier 
-        </Button>
-       
-      </CardActions>
-    </Card>
     
+      <Displayproducts /> 
+      
+      <Dialog  open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description">
+      <DialogTitle id="form-dialog-title">Produit Ajoutée  </DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          Votre produit a été ajouté à votre panier          
+        </DialogContentText>
+        
+      </DialogContent>
+      <DialogActions>
+        <Button variant="contained" onClick={event =>  window.location.href='/cart'} color="primary">
+        <ShoppingCartIcon /> {' '} Aller au panier 
+        </Button>
+        <Button onClick={handleClose} variant="contained" color="secondary">
+          Annuler 
+        </Button>
+      </DialogActions>
+    </Dialog>
+      
+       
     
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={require('../../assets/of1.png')}
-          id="img-prod"
-        />
-        <CardContent>
-          <h3 className="title-product" gutterBottom variant="h5" component="h3">
-          Lingettes universelles pour les mains et les surfaces 200  <Chip
-          
-          size="small"
-          color="secondary"
-        variant="outlined"
-          avatar={<Avatar>V</Avatar>}
-          label="Vide"
-        />
-          </h3>
-          <p  className="desc">
-          Les lingettes universelles polyvalentes Clinell tuent au moins 99,99% des bactéries et virus. Ils
-          peuvent être utilisés pour nettoyer et désinfecter les surfaces, les mains et l'équipement.
-          Efficace à partir de seulement 10 secondes et peut être utilisé sur des mains visiblement sales. Notre
-          formulation est testée dermatologiquement et contient de l'aloe vera et un hydratant pour être doux
-          pour la peau. Reconnu par les professionnels de la santé.
-          </p>
-        </CardContent>
-        
-      </CardActionArea>
-      <CardActions>
-        <Button variant="contained" disableRipple size="small" color="primary">
-        <ShoppingCartIcon /> {' '}
-         Ajouter au Panier
-        </Button>
-       
-      </CardActions>
-    </Card>
-  
-   
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={require('../../assets/of.png')}
-          id="img-prod"
-        />
-        <CardContent>
-          <h3 className="title-product"  gutterBottom variant="h5" component="h2">
-          Lingettes universelles pour les mains et les surfaces 200 <Chip
-          variant="contained"
-          size="small"
-          color="primary"
-          avatar={<Avatar>S</Avatar>}
-          label="En Stock"
-        />
-          </h3>
-          <p  className="desc">
-          Les lingettes universelles polyvalentes Clinell tuent au moins 99,99% des bactéries et virus. Ils
-          peuvent être utilisés pour nettoyer et désinfecter les surfaces, les mains et l'équipement.
-          Efficace à partir de seulement 10 secondes et peut être utilisé sur des mains visiblement sales. Notre
-          formulation est testée dermatologiquement et contient de l'aloe vera et un hydratant pour être doux
-          pour la peau. Reconnu par les professionnels de la santé.
-          </p>
-        </CardContent>
-
-        
-      </CardActionArea>
-      <CardActions>
-        <Button variant="contained" disableRipple size="small" color="primary">
-        <ShoppingCartIcon />{' '}
-          Ajouter en panier
-        </Button>
-       
-      </CardActions>
-    </Card>
+         
     
     </Grid>
   );

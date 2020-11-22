@@ -106,8 +106,7 @@ export default function SignIn() {
         setPassword(localStorage.password );  
         setChecked(localStorage.isChecked);
 
-        console.log("updated"); 
-
+        
       }     
 
 

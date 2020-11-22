@@ -21,11 +21,34 @@ import Toprofile from "./components/Auth/register/Toprofile" ;
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import Profilebyuser from './components/Auth/register/Profilebyuser';
+import SERVER_URL from './components/variables/server_url';
 
 function App() {    
 
 
-const notify = (message) => toast(message);  
+const notify = (message) => toast(message);    
+
+
+const [produits,setproduits] = useState([]); 
+
+
+   useEffect(()=> {    
+
+    fetch(SERVER_URL+"products", {  
+    
+      method : 'GET'
+    })
+      .then(res => res.json())
+      .then(
+        (data) => {  
+           setproduits(data); 
+        },
+        (error) => {
+             
+        }
+      ) 
+
+   },[]) 
   
 useEffect(() => {
   window.addEventListener("offline", () => notify("vous êtes actuellement hors connexion") ) ;
@@ -56,10 +79,9 @@ useEffect(() => {
           <Route path = "/Clinique" exact component={Hospital}/>
           <Route path = "/Particulier" exact component={Particulier}/>
           <Route path = "/Admin" exact component={Admin}/>
-          <Route path = "/products" exact component={Products}/> 
-          <Toprofile path = "/profile" exact component = {Profilebyuser}  />
-        
+          <Route path = "/products" render={(props) => <Products {...props} produits={produits} />}/>  
           
+          <Toprofile path = "/profile" exact component = {Profilebyuser}  />
 
         </Switch>
       </Router>

@@ -18,8 +18,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { productContext } from "../../Global/productContext"
-import {cartContext} from "../../Global/cartContext"
+import { productContext } from "../../Global/productContext" ;
+import {cartContext} from "../../Global/cartContext" ;
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 
@@ -53,8 +53,7 @@ const Products = ({  data }) => {
       <DialogTitle id="form-dialog-title">Produit Ajoutée  </DialogTitle>
       <DialogContent>
         <DialogContentText>
-         Votre produit a été bien ajouter au panier   
-         
+          Votre produit a été ajouté à votre panier          
         </DialogContentText>
         
       </DialogContent>
@@ -75,12 +74,15 @@ const Products = ({  data }) => {
       {products.map(product => (
           
             <ProductCard key={product.id}>
-              <ProductImg src={product.image} />
+              <ProductImg src={"data:image/jpg;base64,"+product.photo} />
               <ProductInfo>
-                <ProductTitle>{product.name}</ProductTitle>
-                <ProductButton onClick={ () =>{ dispatch({type: 'ADD_TO_CART', id: product.id, products});
-                handleClickOpen();
-              }}
+                <ProductTitle>{product.nom}</ProductTitle>
+                <ProductButton  
+                onClick={ () =>{ dispatch({type: 'ADD_TO_CART', id: product.id, products});
+                handleClickOpen(); 
+               
+              } } 
+              disabled = {product.stock == 0}
                
                >  Ajouter au panier</ProductButton>
               </ProductInfo>

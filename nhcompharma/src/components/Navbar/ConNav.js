@@ -80,7 +80,7 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               > 
-              
+  
                 <MenuItem onClick={event =>  window.location.href='/profile'}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
               </Menu>
