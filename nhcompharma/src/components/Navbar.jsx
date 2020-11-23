@@ -12,8 +12,8 @@ const Navbare = ({cartToggle}) => {
         
         <div>
 
- <ul  className="smart">
-    <li onClick={cartToggle}><Link to="/cart"><span className="dollor">
+        <ul className="dollor" >
+    <li onClick={cartToggle}><Link to="/cart"><span className="dollor1">
     <i className="fas fa-cart-plus"></i></span>
     <span className="shoppingCartTotal">{shoppingCart ? shoppingCart.length : 0}</span></Link></li>
 
