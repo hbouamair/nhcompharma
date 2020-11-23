@@ -29,11 +29,12 @@ class Navbar extends Component {
                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
                     {MenuItems.map((item, index) => {
                         return (
-                            <li key={index}>
-                                <a className={item.cName} href={item.url}>
+                            <li key={index}> 
+                             <Link to ={item.url}>
+                                <a className={item.cName}>
                                 {item.title}
-                                </a>
-                                
+                                </a> 
+                             </Link>          
                             </li>
 
                         )

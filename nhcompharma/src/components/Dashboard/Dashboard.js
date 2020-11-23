@@ -98,15 +98,13 @@ function Dashboard() {
       fetch(SERVER_URL+"products", { 
         method : 'GET'
       })
-        .then(res => res.json())
-        .then(
-          (data) => { 
-             setProducts(data);
-          },
-          (error) => {
-               
+        .then(res => res.json().then( data => {  
+          if (res.status >= 200 && res.status <= 299) {   
+          setProducts(data); 
           }
-        ) 
+        }))
+        
+        
     }
 
 

@@ -43,7 +43,9 @@ export default function MenuAppBar() {
        sessionStorage.removeItem("jwt");  
        sessionStorage.removeItem("currentuser");
        window.location.reload(false);
-  }; 
+  };  
+
+  const handleC = () => {}
 
   
 
@@ -77,8 +79,9 @@ export default function MenuAppBar() {
                   vertical: 'bottom',
                   horizontal: 'center',
                 }}
-                open={open}
-                onClose={handleClose}
+                open={open} 
+                onClick={() => { setAnchorEl(!anchorEl)}}
+               
               > 
   
                 <MenuItem onClick={event =>  window.location.href='/profile'}>Profile</MenuItem>

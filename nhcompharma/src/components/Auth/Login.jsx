@@ -123,16 +123,13 @@ export default function SignIn() {
         }  ,
 
      })
-      .then(res => res.json())
-      .then(data =>  
-       {
-          sessionStorage.setItem("currentuser",JSON.stringify(data));   
+      .then(res => res.json().then ( data => {  
+        if (res.status >= 200 && res.status <= 299) {
+         sessionStorage.setItem("currentuser",JSON.stringify(data));  
+         window.location.href="/";  
+        }
 
-       
-
-         
- 
-      })
+      }))
       .catch(err => console.error(err))
 
        
@@ -161,11 +158,12 @@ export default function SignIn() {
               localStorage.setItem('password',  password ) ;    
               localStorage.setItem('isChecked', isChecked ) ;  
               
-              setTimeout(() => {  
+         /*     setTimeout(() => {  
                 
                   window.location.href="/";  
+ 
+               },1000)  */
 
-               },1000)
              
 
             
@@ -214,7 +212,6 @@ export default function SignIn() {
             value={username}  
           />      
       
-       
           <TextField
             variant="outlined"
             margin="normal"
@@ -230,9 +227,6 @@ export default function SignIn() {
           
           />   
 
-       
-         
-           
           <FormControlLabel
             control={<Checkbox id="isChecked"   checked={isChecked} onChange={(e) => { setChecked(e.target.checked); console.log(isChecked)}}    color="primary" />}
             label="Remember me"

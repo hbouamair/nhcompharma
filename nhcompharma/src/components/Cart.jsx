@@ -62,7 +62,6 @@ const Cart = (props) => {
                    }
                   
                }
-          
              
              ))
              .catch((error) => {    
@@ -105,9 +104,9 @@ const Cart = (props) => {
         </div>
         {shoppingCart.length ? <div className="cartSummary">
             <div className="summary">
-                <h3>Order Summary</h3>
+                <h3>Récapilatif de la commande</h3>
                 <div className="totalItems">
-                    <div className="items">Total Items</div>
+                    <div className="items">La quantité totale</div>
                <div className="itemsCount">{qty}.00</div>
                 </div>
             

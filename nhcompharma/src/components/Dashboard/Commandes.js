@@ -31,9 +31,6 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-
-
-
 function Commandes() { 
      
       const [isOpen , setOpen ] = useState(false);    
@@ -140,11 +137,10 @@ function Commandes() {
           headers : { 'Authorization' : token } ,
           method : 'GET'
         })
-          .then(res => res.json())
-          .then(
-            (data) => {  
-               setLoading(false);  
-              console.log(data); 
+          .then(res => res.json().then( 
+           data => {  
+            if (res.status >= 200 && res.status <= 299) {
+            setLoading(false);   
             data.map((commande) => { 
               if(commande.etat == "Inprogress"){ 
                      commande.etat = "En cours"
@@ -153,14 +149,13 @@ function Commandes() {
                    }else if (commande.etat=="Confirmed") { 
                     commande.etat = "Confirmée"
               }
-             }) 
-              
-               setOrders(data);
-            },
-            (error) => {
-                 
-            }
-          )
+             })  
+               setOrders(data); 
+            } 
+           }
+
+          ))
+          
         
       }
 
