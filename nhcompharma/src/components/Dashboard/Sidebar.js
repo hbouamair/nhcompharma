@@ -4,21 +4,37 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import SupervisorAccountTwoToneIcon from '@material-ui/icons/SupervisorAccountTwoTone';
 import { NavLink, Link } from 'react-router-dom'
+import $ from 'jquery';
+import SideNav from './RightNav';
+
+
 
 
 class Sidebar extends Component {
+  
+  
+
+
   render() {
     return (
-      <div className="sidebar">
-        <div className="sidebar-wrapper">
+      <div>
+      <SideNav/>
+      
+      <div className="sidebar" >
+     
+      
+      
+      
+        <div className="sidebar-wrapper" >
           <div className="logo">
+          
             <Link to='/' className="simple-text">
             <SupervisorAccountTwoToneIcon  style={{ fontSize: 30 
              }}/>
               Admin 
             </Link>
           </div>
-          <ul className="nav">
+          <ul className="nav   ">
             <li className="nav-item">
               <NavLink className="nav-link" to='/dashboard'>
               <i className="nc-icon">  <LocalMallOutlinedIcon  style={{ fontSize: 30 ,
@@ -48,6 +64,10 @@ class Sidebar extends Component {
           </ul>
         </div>
       </div>
+      </div>
+
+      
+    
     )
   }
 }

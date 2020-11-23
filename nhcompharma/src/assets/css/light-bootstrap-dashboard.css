@@ -340,7 +340,6 @@ body>.navbar-collapse {
     bottom: 0;
     left: 0;
     width: 260px;
-    display: block;
     z-index: 1;
     color: #fff;
     font-weight: 200;
@@ -393,7 +392,7 @@ body>.navbar-collapse .logo p {
 .sidebar .logo .simple-text,
 body>.navbar-collapse .logo .simple-text {
     text-transform: uppercase;
-    padding: 5px 0px;
+    padding: 5px;
     display: block;
     font-size: 18px;
     color: #FFFFFF;
@@ -2103,12 +2102,7 @@ fieldset[disabled] .form-control {
     font-size: 16px;
 }
 
-.navbar.fixed {
-    width: calc(100% - $sidebar-width);
-    right: 0;
-    left: auto;
-    border-radius: 0;
-}
+
 
 .navbar .nc-icon {
     font-weight: 700;
@@ -3974,13 +3968,7 @@ Copyright (c) 2015 Daniel Eden
 @media (max-width: 991px) {
     .sidebar {
         right: 0 !important;
-        left: auto;
         position: absolute;
-        -webkit-transform: translate3d(262px, 0, 0);
-        -moz-transform: translate3d(262px, 0, 0);
-        -o-transform: translate3d(262px, 0, 0);
-        -ms-transform: translate3d(262px, 0, 0);
-        transform: translate3d(262px, 0, 0) !important;
         -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
         -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
         -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);

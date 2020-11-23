@@ -16,7 +16,60 @@ height:75px;
 .title-profile{
     margin-bottom: 50px;
     
+
+
+}
+.btn-ajout{
+    max-width: 100%;
 }
 .buttonpro{
     margin-top: 50px;
+
 }
+.list-menu{ 
+    color :#ffff ;
+    text-align: center;
+    padding: 4rem;
+    width: 100%;
+    font-size: 25px;
+    display: table;
+}
+.list-menu:hover {
+    background-color: #f4f4f4;
+    border-radius: 0;
+    color : #77eeff; 
+}
+.lien{
+    font-family: 'Goldman', cursive;
+    color :#343838;
+}
+
+@media screen and (max-width: 993px){
+    .sidebar {
+        display: none;
+    
+    
+        
+    }
+   
+
+    
+    
+    
+}
+@media screen and (max-width: 770px){
+    .list-menu{ 
+        color :#ffff ;
+        text-align: center;
+        padding: 4.5rem;
+        margin-right: 5px;
+        width: 100%;
+        font-size: 15px;
+        display: table;
+    }
+    .sidenav{
+        width:60%;
+    }
+
+}
+
