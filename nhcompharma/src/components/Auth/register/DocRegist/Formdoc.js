@@ -94,7 +94,8 @@ export default function Doc() {
              .then(data =>  
                 {    
                   if (r.status >= 200 && r.status <= 299) {      
-                     toast.success("Votre Compte a bien été créé"); 
+                     toast.success("Votre Compte a bien été créé");  
+                     window.location.href="/login"
                   } else {      
                      
                     toast.error(data.error);
