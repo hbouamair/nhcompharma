@@ -99,7 +99,7 @@ const Cart = (props) => {
         
         <button onClick={() => dispatch({type: 'DELETE_PRODUCT', id: product.id})} className="deleteCartPro"><i className="fas fa-trash-alt"></i></button>
            </div>  
-        )) : 'Yourr Cart is currently empty!'}
+        )) : 'Votre panier est actuellement vide'}
         
         </div>
         {shoppingCart.length ? <div className="cartSummary">

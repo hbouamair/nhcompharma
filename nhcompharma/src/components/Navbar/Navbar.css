@@ -82,7 +82,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1289px) {
+@media screen and (max-width: 900px) {
     .NavbarItems {
         position: relative;
     }

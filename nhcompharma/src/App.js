@@ -38,15 +38,15 @@ const [produits,setproduits] = useState([]);
     
       method : 'GET'
     })
-      .then(res => res.json())
-      .then(
-        (data) => {  
-           setproduits(data); 
-        },
-        (error) => {
-             
+      .then(res => res.json() .then( data => {  
+
+        if (res.status >= 200 && res.status <= 299) {  
+          setproduits(data);
         }
-      ) 
+         
+      } 
+      ));
+      
 
    },[]) 
   

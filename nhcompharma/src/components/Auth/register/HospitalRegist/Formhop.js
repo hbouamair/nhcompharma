@@ -80,7 +80,6 @@ export default function Hos() {
 
   const user = {"username" : username , "email" : email , "password" : password , "nom_clinique" : nom_clinique , "nom_resp_clinique" : nom_resp_clinique , "prenom_resp_clinique" : prenom_resp_clinique , "ice_clinique" : ice_clinique , "adresse_clinique" : adresse_clinique , "phone_num_clinique" : phone_num_clinique , "role" :  "USER"  }
      
-
         fetch(SERVER_URL+"signup/clinique" ,{ 
         method : 'POST' ,  
         headers : {'Content-Type' : 'application/json' } , 
@@ -90,7 +89,8 @@ export default function Hos() {
            .then(data =>  
               {    
                 if (r.status >= 200 && r.status <= 299) {      
-                   toast.success("Votre Compte a bien été créé"); 
+                   toast.success("Votre Compte a bien été créé");  
+                   window.location.href="/login"
                 } else {      
                    
                   toast.error(data.error);

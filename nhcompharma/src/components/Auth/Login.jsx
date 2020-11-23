@@ -127,7 +127,8 @@ export default function SignIn() {
         if (res.status >= 200 && res.status <= 299) {
          sessionStorage.setItem("currentuser",JSON.stringify(data));  
          window.location.href="/";  
-        }
+        } 
+        setDisabled(false);
 
       }))
       .catch(err => console.error(err))
@@ -158,17 +159,12 @@ export default function SignIn() {
               localStorage.setItem('password',  password ) ;    
               localStorage.setItem('isChecked', isChecked ) ;  
               
-         /*     setTimeout(() => {  
-                
-                  window.location.href="/";  
- 
-               },1000)  */
-
+    
              
 
             
               }
-              setDisabled(false);  
+              
 
             
           }
