@@ -20,12 +20,6 @@ function UserProfile() {
       <div className="row">
         <div className="col-md-4">
 
-           
-            
-           
-             
-             <Card   className=" Profile">
-             <CardContent>
              <h3 className="title-profile">Profile </h3>
                <form   autoComplete="off">
                <div>
@@ -99,10 +93,10 @@ function UserProfile() {
             </div>
 
         </form>
-        </CardContent>
-            </Card>  
+       
+           
             </div>
-            <hr />
+          
            
         
         </div>

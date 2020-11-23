@@ -259,7 +259,6 @@ export default function PharmaProfile() {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="username"
                 label="Login"
@@ -390,16 +389,16 @@ export default function PharmaProfile() {
 
           <CardActions>
                    
-                  <Button
-                  variant="contained"
-                  color="primary"
-                  size="large" 
-                  type="submit"
-                  className={classes.button}
-                  startIcon={<SaveIcon />}
-                >
-                  Enregistrer
-                </Button>
+          <Button
+          variant="contained"
+          color="primary"
+          size="large" 
+          type="submit" 
+          className={classes.button1}
+          startIcon={<SaveIcon />}
+        >
+          Changer le mot de passe
+        </Button>
                   </CardActions>
                   
         </form>

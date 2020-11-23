@@ -274,7 +274,7 @@ export default function DoctorProfile() {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
+                disabled
                 fullWidth
                 id="username"
                 label="Login"
@@ -393,10 +393,10 @@ export default function DoctorProfile() {
                   color="primary"
                   size="large" 
                   type="submit" 
-                  className={classes.button}
+                  className={classes.button1}
                   startIcon={<SaveIcon />}
                 >
-                  Enregistrer
+                  Changer le mot de passe
                 </Button>
                   </CardActions>
                   

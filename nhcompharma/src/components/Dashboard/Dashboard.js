@@ -15,6 +15,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 import "./Dash.css"
+import TableContainer from '@material-ui/core/TableContainer';
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
@@ -98,13 +99,15 @@ function Dashboard() {
       fetch(SERVER_URL+"products", { 
         method : 'GET'
       })
-        .then(res => res.json().then( data => {  
-          if (res.status >= 200 && res.status <= 299) {   
-          setProducts(data); 
+        .then(res => res.json())
+        .then(
+          (data) => { 
+             setProducts(data);
+          },
+          (error) => {
+               
           }
-        }))
-        
-        
+        ) 
     }
 
 
@@ -267,17 +270,18 @@ function Dashboard() {
          
         <div className="content">
     
-        <div className="container-fluid">
+   
        
           <div className="row">
 
             <div className="col-md-4">
-              <div className="card ">
+            
+              
                 <div className="card-header ">
                   <h4 className="card-title">Listes des Produits</h4>
                   <p className="card-category"></p>
                 </div>
-                <div className="card-body ">
+                
                 <div style={{ float: "right" }}>
                 <Fab
                 size="small"
@@ -289,7 +293,8 @@ function Dashboard() {
                   <AddIcon />
                 </Fab>
               </div>
-                <Paper>
+              <TableContainer component={Paper}>
+                
                 <Table>
                   <TableHead>
                     <TableRow>
@@ -318,9 +323,11 @@ function Dashboard() {
                     
                   </TableBody>
                 </Table>
-              </Paper>
-                </div>
-              </div>
+                </TableContainer>
+              
+               
+              
+              
             </div> 
 
             <Dialog open={isOpen} onClose={handleOpen} aria-labelledby="form-dialog-title">
@@ -501,7 +508,7 @@ function Dashboard() {
        
 
           </div>
-        </div>
+        
       </div>
     )
 }
