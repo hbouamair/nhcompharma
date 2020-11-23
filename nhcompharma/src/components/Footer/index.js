@@ -3,6 +3,8 @@ import './Footer.css';
 import {Button} from "../Navbar/Button";
 import {Link} from "react-router-dom"
 import logo from '../../assets/nh.png'
+import ContactMailIcon from '@material-ui/icons/ContactMail';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 function Footer() {
   return (
@@ -16,9 +18,11 @@ function Footer() {
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items1'>
-            <h2>About Us</h2>
-            <p> Nh com Pharma est une Société Marocaine située à Rabat, <br/>
-            qui a pour activité : l’importation, la distribution, la vente directe et e-commerce. </p>
+            <h2>À propos de nous</h2>
+            <p> Nh com Pharma est une Société Marocaine   , 
+            qui a pour activité : <br/>l’importation, la distribution, la vente directe et e-commerce. </p><br/>
+            <p> <ContactMailIcon/> : commande@nhcom.ma   </p><br/>
+           <p> <LocationOnIcon/>  46 Avenue Okba 1er étage Appt 2 - Agdal - Code Postal : 10090 <br/>Rabat     </p>
           </div>
           <div class='footer-link-items'>
             <h2>Menu </h2>
