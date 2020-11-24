@@ -33,7 +33,7 @@ const MobileNavMenu = () => {
         
         <li className = "list-menu" >
         
-        <Link className="lien" to = "/dashboard" >
+        <Link className="lien" to = "/dashboard" onClick={() => {toggleMenuOpen(false)}} >
         <i className="nc-icon">  <LocalMallOutlinedIcon  style={{ fontSize: 40 ,
           padding :2 ,
          }}/></i>
@@ -42,7 +42,7 @@ const MobileNavMenu = () => {
         </li>{" "} 
         <li className = "list-menu">
         
-        <Link className="lien" to = "/commandes" >
+        <Link className="lien" to = "/commandes" onClick={() => {toggleMenuOpen(false)}} >
         <i className="nc-icon">  <AddShoppingCartSharpIcon style={{ fontSize: 40 ,
           padding :2 ,
          }}/></i>
@@ -51,7 +51,7 @@ const MobileNavMenu = () => {
         </li>{" "} 
         <li  className = "list-menu">
         
-        <Link  className="lien" to = "/profile" >
+        <Link  className="lien" to = "/profile" onClick={() => {toggleMenuOpen(false)}} >
         <i className="nc-icon">  <AccountCircleOutlinedIcon style={{ fontSize: 40 ,
           padding :2 ,
          }}/></i>
