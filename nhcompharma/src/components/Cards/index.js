@@ -77,13 +77,13 @@ export default function MediaCard(props) {
 
    const Displayproducts = () => {  
 
-    if(props.produits.length == 0 ) { 
+    if(products.length == 0 ) { 
       return  <p>Aucun produit n'est disponible pour le moment</p>
         }else { 
             
           return (    
      
-        props.produits.map((produit) => {  
+        products.map((produit) => {  
                
            return(  
             <Card  className={classes.card}>
@@ -108,7 +108,7 @@ export default function MediaCard(props) {
                 {produit.description}
                 </p>
               </CardContent>
-              
+
             </CardActionArea>
             <CardActions>
               <Button   

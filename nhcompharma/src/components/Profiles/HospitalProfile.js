@@ -97,9 +97,7 @@ export default function HospitalProfile() {
   const { handleSubmit, register, errors } = useForm();  
   
   useEffect(() => {  
-          
     getUserDetails(); 
-
    },[]);
   
 
