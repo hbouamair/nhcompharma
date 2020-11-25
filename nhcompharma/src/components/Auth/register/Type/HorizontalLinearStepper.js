@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Vous êtes ..', 'Insérer vos information' ];
+  return ['Vous êtes ..', 'Insérer vos informations' ];
 }
 
 function getStepContent(stepIndex) {
@@ -29,7 +29,7 @@ function getStepContent(stepIndex) {
     case 0:
       return 'Vous êtes ..';
     case 1:
-      return 'Insérer vos information';
+      return 'Insérer vos informations';
     default:
       return 'Unknown stepIndex';
   }
