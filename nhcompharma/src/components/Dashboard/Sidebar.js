@@ -31,7 +31,7 @@ class Sidebar extends Component {
             <Link to='/' className="simple-text">
             <SupervisorAccountTwoToneIcon  style={{ fontSize: 30 
              }}/>
-              Admin 
+              Administration 
             </Link>
           </div>
           <ul className="nav   ">

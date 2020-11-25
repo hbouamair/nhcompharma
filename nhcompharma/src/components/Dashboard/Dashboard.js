@@ -78,7 +78,7 @@ function Dashboard() {
     const OpenDeleteModal = (id) => { 
      setSP(id); 
      handleDeleteModal(); 
-     console.log("the id of product : " + id)
+     
     } 
 
     const handleDeleteModal = () => {  
@@ -124,10 +124,7 @@ function Dashboard() {
       }) 
       .then((response) => { 
         if (response.status >= 200 && response.status <= 299) {  
-            
-           
             GetProductsFromServer() ; 
-            
           
         } else {  
          
@@ -151,7 +148,7 @@ function Dashboard() {
              
          const token  = sessionStorage.getItem('jwt');   
         
-         
+    
          fetch(SERVER_URL+"admin/addproduit" ,{ 
           method : 'POST' ,  
           headers: { 'Authorization': token},  
@@ -278,7 +275,7 @@ function Dashboard() {
             
               
                 <div className="card-header ">
-                  <h4 className="card-title">Listes des Produits</h4>
+                  <h4 className="card-title">Liste des Produits</h4>
                   <p className="card-category"></p>
                 </div>
                 
