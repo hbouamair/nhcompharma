@@ -156,7 +156,7 @@ export default function Pharma() {
                 required
                 fullWidth
                 id="prenom"
-                label="Prénom du pharmacien"
+                label="Prénom du responsable"
                 name="prenom_resp_pharmacie" 
                 onChange={(e) => { setprenom_resp_pharmacie(e.target.value);}}
                 autoComplete="lname"

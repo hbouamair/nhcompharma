@@ -82,9 +82,15 @@ export default function MenuAppBar() {
                 open={open} 
                 onClick={() => { setAnchorEl(!anchorEl)}}
                
-              > 
+              >  
+               
+                { sessionStorage.getItem("currentuser")  
+                ? ( 
+                   JSON.parse(sessionStorage.getItem("currentuser")).role == "USER" &&  <MenuItem onClick={event =>  window.location.href='/profile'}>Profile</MenuItem>
+                )       
+                : <p></p> }
   
-                <MenuItem onClick={event =>  window.location.href='/profile'}>Profile</MenuItem>
+               
                 <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
               </Menu>
             </div>

@@ -16,8 +16,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle'; 
 import {cartContext} from "../../Global/cartContext" ; 
-import { productContext } from "../../Global/productContext" ;
-
+import { productContext } from "../../Global/productContext" ; 
+import CircularProgress from '@material-ui/core/CircularProgress';
+import './indexcss.css' ;
 
 const useStyles = makeStyles({
   root: {
@@ -73,66 +74,66 @@ export default function MediaCard(props) {
   };  
 
   const {dispatch} = useContext(cartContext); 
-  const {products} = useContext(productContext);
+  const {products,isloading} = useContext(productContext);
 
    const Displayproducts = () => {  
-
-    if(products.length == 0 ) { 
-      return  <p>Aucun produit n'est disponible pour le moment</p>
-        }else { 
-            
-          return (    
-     
+   return ( isloading ? <div className="centerd"><p><CircularProgress /> </p></div>  
+   : ( 
+       products.length == 0 ? <div> <p>Aucun produit n'est disponible pour le moment</p></div> 
+       : ( 
         products.map((produit) => {  
                
-           return(  
-            <Card  className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={"data:image/jpg;base64,"+produit.photo}
-                id="img-prod"
-              /> 
-              
-              <CardContent>
-                <h3 className="title-product" gutterBottom variant="h5" component="h2">
-                {produit.nom} <Chip
-                variant="contained"
-                size="small"
-                color="primary"
-                avatar={<Avatar>S</Avatar>}
-                label={produit.stock == 0 ? "En rupture de stock" : "Disponible"}
-              />
-                </h3>
-                <p className="desc">
-                {produit.description}
-                </p>
-              </CardContent>
+          return(  
+           <Card  className={classes.card}>
+           <CardActionArea>
+             <CardMedia
+               className={classes.media}
+               image={"data:image/jpg;base64,"+produit.photo}
+               id="img-prod"
+             /> 
+             
+             <CardContent>
+               <h3 className="title-product" gutterBottom variant="h5" component="h2">
+               {produit.nom} <Chip
+               variant="contained"
+               size="small"
+               color="primary"
+               avatar={<Avatar>S</Avatar>}
+               label={produit.stock == 0 ? "En rupture de stock" : "Disponible"}
+             />
+               </h3>
+               <p className="desc">
+               {produit.description}
+               </p>
+             </CardContent>
 
-            </CardActionArea>
-            <CardActions>
-              <Button   
-              variant="contained"  
-              disableRipple size="small"  
-              color="primary" 
-              disabled = {produit.stock == 0} 
-              onClick={ () =>{ dispatch({type: 'ADD_TO_CART', id: produit.id, products});
-              handleClickOpen(); 
-             
-            } } 
-              > 
-              <ShoppingCartIcon />
-              {' '}
-               Ajouter Au panier 
-              </Button>
-             
-            </CardActions>
-          </Card> 
-          ); 
-       }) 
+           </CardActionArea>
+           <CardActions>
+             <Button   
+             variant="contained"  
+             disableRipple size="small"  
+             color="primary" 
+             disabled = {produit.stock == 0} 
+             onClick={ () =>{ dispatch({type: 'ADD_TO_CART', id: produit.id, products});
+             handleClickOpen(); 
+           } } 
+             > 
+             <ShoppingCartIcon />
+             {' '}
+              Ajouter Au panier 
+             </Button>
+            
+           </CardActions>
+         </Card> 
+         ); 
+      }) 
+
+       )
    )  
-  }
-
+   
+   
+   )
+ 
    }
 
   return (
