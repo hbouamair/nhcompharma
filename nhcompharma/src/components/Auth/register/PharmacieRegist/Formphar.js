@@ -124,7 +124,7 @@ export default function Pharma() {
 }
 
   return (
-    <Container component="main" maxWidth="xs" className={classes.root}>  
+    <Container component="main" maxWidth="xs" className={classes.root} style={{ "background" : "white" }} >  
       <HorizontalLabelPositionBelowStepper activestep={1} />
       <ToastContainer />
       <CssBaseline />

@@ -110,7 +110,7 @@ export default function Part() {
   }
   
   return (
-    <Container component="main" maxWidth="xs" className={classes.root}>  
+    <Container component="main" maxWidth="xs" className={classes.root} style={{ "background" : "white" }}>  
       <HorizontalLabelPositionBelowStepper activestep={1} />
        <ToastContainer />
       <CssBaseline />

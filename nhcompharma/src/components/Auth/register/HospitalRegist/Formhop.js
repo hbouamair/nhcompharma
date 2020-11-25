@@ -107,7 +107,7 @@ export default function Hos() {
 
 
   return (
-    <Container component="main" maxWidth="xs" className={classes.root}> 
+    <Container component="main" maxWidth="xs" className={classes.root} style={{ "background" : "white" }} > 
        <ToastContainer /> 
        <HorizontalLabelPositionBelowStepper activestep={1} />
       <CssBaseline />
