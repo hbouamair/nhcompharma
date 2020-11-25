@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    color:'#FAFAFA',
   },
   backButton: {
     marginRight: theme.spacing(1),
